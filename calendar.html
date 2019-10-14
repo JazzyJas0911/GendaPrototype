@@ -7,8 +7,36 @@
         <script async src="./javascript/calendar.js"></script>
     </head>
 
-    <body>
+    <body onload="generate_table();">
         <h1> Genda Weekly Calendar </h1>
+
+
+
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn1">Add Task</button>
+        <button id="myBtn2">Delete Task</button>
+
+        <!-- The Modal -->
+        <div id="myModal1" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content1">
+                <span class="close">&times;</span>
+                <p>Some text in the Add Task..</p>
+            </div>
+
+        </div>
+
+        <div id="myModal2" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content2">
+                <span class="close">&times;</span>
+                <p>Some text in the Delete Task..</p>
+            </div>
+
+        </div>
+
 
         <div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
             <div class="card">
@@ -38,6 +66,8 @@
                     <button class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next</button>
                 </div>
                 <br/>
+
+                
                 <form class="form-inline">
                     <label class="lead mr-2 ml-2" for="month">Jump To: </label>
                     <select class="form-control col-sm-4" name="month" id="month" onchange="jump()">

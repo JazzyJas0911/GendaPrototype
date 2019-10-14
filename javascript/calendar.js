@@ -7,6 +7,8 @@ let selectMonth = document.getElementById("month");
 let selectDay = document.getElementById("day");
 
 let months = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+let days = ["", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let times = ["", "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"];
 
 let monthAndYear = document.getElementById("monthAndYear");
 showCalendar(currentMonth, currentYear);
@@ -78,4 +80,88 @@ function showCalendar(month, year) {
         tbl.appendChild(row); // appending each row into calendar body.
     }
 
+}
+
+
+
+
+
+
+
+function generate_table() {
+    // get the reference for the body
+    var body = document.getElementsByTagName("body")[0];
+  
+    // creates a <table> element and a <tbody> element
+    var tbl = document.createElement("table");
+
+    // DEEAAAAAD CODE
+    var col = document.createElement("col");
+    col.setAttribute("width", "50");
+    col.setAttribute("width", "200");
+
+    var tblBody = document.createElement("tbody");
+  
+    // creating all cells
+    for (var i = 0; i < 25; i++) {
+      // creates a table row
+      var row = document.createElement("tr");
+  
+      for (var j = 0; j < 8; j++) {
+        // Create a <td> element and a text node, make the text
+        // node the contents of the <td>, and put the <td> at
+        // the end of the table row
+        var cell = document.createElement("td");
+        var cellText;
+        if(i == 0) // DAYS OF THE WEEK
+            cellText = document.createTextNode(days[j]);
+        else if (j == 0) // TIME OF DAY
+            cellText = document.createTextNode(times[i]);
+        else // ELSE IF THERE IS AN EVENT
+            cellText = document.createTextNode("");
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+      }
+  
+      // add the row to the end of the table body
+      tblBody.appendChild(row);
+    }
+  
+    // put the <tbody> in the <table>
+    tbl.appendChild(tblBody);
+    // appends <table> into <body>
+    body.appendChild(tbl);
+  }
+  
+
+
+
+
+
+  // Get the modal
+var modal = document.getElementById("myModal1");
+var modal = document.getElementById("myModal2");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn1");
+var btn = document.getElementById("myBtn2");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
