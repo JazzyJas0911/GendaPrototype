@@ -33,12 +33,13 @@
                 </table>
         
                 <div class="form-inline">
-        
                     <button class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()">Previous</button>
         
                     <button class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next</button>
                 </div>
                 <br/>
+
+
 
                 
                 <form class="form-inline">
@@ -57,7 +58,6 @@
                         <option value=10>November</option>
                         <option value=11>December</option>
                     </select>
-        
         
                     <label for="year"></label><select class="form-control col-sm-4" name="year" id="year" onchange="jump()">
                     <option value=2009>2009</option>
@@ -86,41 +86,54 @@
             </div>
         </div>
 
-        
-<div style="display: flex;">
-        <form action="calendar.html" style="border:1px solid #ccc">
-            <div class="container">
-                <h1>Add Task</h1>
 
-                <label for="username"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="username" required>
 
-                <label for="task"><b>Task Name</b></label>
-                <input type="text" placeholder="Enter Task Name" name="task" required>
 
-                <label for="start"><b>Start Time</b></label>
-                <input type="text" placeholder="Enter Start Time" name="start" required>
+        <button class="open-button" onclick="openForm()">Add Task</button>
+        <div class="form-popup" id="myForm">
+            <form action="calendar.html" class="form-container">
+                <div class="container">
+                    <h1>Add Task</h1>
+    
+                    <label for="username"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="username" required>
 
-                <label for="end"><b>End Time</b></label>
-                <input type="text" placeholder="Enter End Time" name="end" required>
+                    <label for="task"><b>Task Name</b></label>
+                    <input type="text" placeholder="Enter Task Name" name="task" required>
 
-                <button type="submit" class="btn">Add Task</button>
+                    <label for="start"><b>Start Time</b></label>
+                    <input type="text" placeholder="Enter Start Time" name="start" required>
 
-            </div>
-        </form>
+                    <label for="end"><b>End Time</b></label>
+                    <input type="text" placeholder="Enter End Time" name="end" required>
+                  
+                    <div class="clearfix">
+                        <button type="submit" class="btn">Add Task</button>
+                        <button type="submit" class="btn cancel" onclick="closeForm()">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-        <form action="calendar.html" style="border:1px solid #ccc">
-            <div class="container">
-                <h1>Delete Task</h1>
+        <button class="open-button2" onclick="openForm2()">Delete Task</button>
+        <div class="form-popup" id="myForm2">
+            <form action="calendar.html" class="form-container">
+                <div class="container">
+                    <h1>Delete Task</h1>
 
-                <label for="task"><b>Task Name</b></label>
-                <input type="text" placeholder="Enter Task Name" name="task" required>
+                    <label for="task"><b>Task Name</b></label>
+                    <input type="text" placeholder="Enter Task Name" name="task" required>
+                  
+                    <div class="clearfix">
+                        <button type="submit" class="btn">Delete Task</button>
+                        <button type="submit" class="btn cancel" onclick="closeForm2()">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-                <button type="submit" class="btn">Delete Task</button>
 
-            </div>
-        </form>
-    </div>
+
 
         <script src="calendar.js"></script>
     </body>
