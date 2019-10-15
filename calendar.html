@@ -109,8 +109,68 @@
                     <option value=2028>2028</option>
                     <option value=2029>2029</option>
                 </select></form>
+
             </div>
         </div>
+
+
+
+        <div class="form-popup" id="myForm">
+            <form action="calendar.html" class="form-container">
+                <div class="container">
+                    <h1>Sign Up</h1>
+    
+                    <label for="name"><b>Full Name</b></label>
+                    <input type="text" placeholder="Enter Full Name" name="name" required>
+    
+                    <label for="username"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="username" required>
+                  
+                    <label for="email"><b>Email</b></label>
+                    <input type="text" placeholder="Enter Email" name="email" required>
+                  
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+                  
+                    <div class="clearfix">
+                        <button type="submit" class="signupbtn">Sign Up</button>
+                    </div>
+
+                    <button type="submit" class="btn">Login</button>
+                    <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+                </div>
+            </form>
+        </div>
+
+
+        <button class="open-button" onclick="openForm()">Open Form</button>
+
+
+<div class="form-popup" id="myForm">
+        <form action="calendar.html" style="border:1px solid #ccc">
+            <div class="container">
+                <h1>Add Task</h1>
+
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+
+                <label for="task"><b>Task Name</b></label>
+                <input type="text" placeholder="Enter Task Name" name="task" required>
+
+                <label for="start"><b>Start Time</b></label>
+                <input type="text" placeholder="Enter Start Time" name="start" required>
+
+                <label for="end"><b>End Time</b></label>
+                <input type="text" placeholder="Enter End Time" name="end" required>
+
+                <button type="submit" class="btn">Add Task</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+
+            </div>
+        </form>
+        </div>
+
+
         <script src="calendar.js"></script>
     </body>
     
