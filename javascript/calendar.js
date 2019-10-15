@@ -88,54 +88,6 @@ function showCalendar(month, year) {
 
 
 
-function generate_table() {
-    // get the reference for the body
-    var body = document.getElementsByTagName("body")[0];
-  
-    // creates a <table> element and a <tbody> element
-    var tbl = document.createElement("table");
-
-    // DEEAAAAAD CODE
-    var col = document.createElement("col");
-    col.setAttribute("width", "50");
-    col.setAttribute("width", "200");
-
-    var tblBody = document.createElement("tbody");
-  
-    // creating all cells
-    for (var i = 0; i < 25; i++) {
-      // creates a table row
-      var row = document.createElement("tr");
-  
-      for (var j = 0; j < 8; j++) {
-        // Create a <td> element and a text node, make the text
-        // node the contents of the <td>, and put the <td> at
-        // the end of the table row
-        var cell = document.createElement("td");
-        var cellText;
-        if(i == 0) // DAYS OF THE WEEK
-            cellText = document.createTextNode(days[j]);
-        else if (j == 0) // TIME OF DAY
-            cellText = document.createTextNode(times[i]);
-        else // ELSE IF THERE IS AN EVENT
-            cellText = document.createTextNode("");
-        cell.appendChild(cellText);
-        row.appendChild(cell);
-      }
-  
-      // add the row to the end of the table body
-      tblBody.appendChild(row);
-    }
-  
-    // put the <tbody> in the <table>
-    tbl.appendChild(tblBody);
-    // appends <table> into <body>
-    body.appendChild(tbl);
-  }
-  
-
-
-
 
 
   // Get the modal
