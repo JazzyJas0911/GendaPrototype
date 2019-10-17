@@ -95,11 +95,6 @@ function generate_table() {
     // creates a <table> element and a <tbody> element
     var tbl = document.createElement("table");
 
-    // DEEAAAAAD CODE
-    var col = document.createElement("col");
-    col.setAttribute("width", "50");
-    col.setAttribute("width", "200");
-
     var tblBody = document.createElement("tbody");
   
     // creating all cells
