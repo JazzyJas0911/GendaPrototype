@@ -4,7 +4,7 @@
     <head>
         <title>Calendar</title>
         <link rel="stylesheet" href="styles/styles.css" />
-        <script async src="./javascript/calendar.js"></script>
+        <script async src="./javascript/calendar2.js"></script>
     </head>
 
     <body onload="generate_table();">
@@ -88,36 +88,36 @@
 
         
 <div style="display: flex;">
-        <form action="calendar2.html" style="border:1px solid #ccc" autocomplete="off">
+        <form action="calendar.html" style="border:1px solid #ccc">
             <div class="container">
                 <h1>Add Task</h1>
 
                 <label for="username"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="username" required autocomplete="off">
+                <input type="text" placeholder="Enter Username" name="username" required>
 
                 <label for="task"><b>Task Name</b></label>
-                <input type="text" placeholder="Enter Task Name" name="task" required autocomplete="off">
+                <input type="text" placeholder="Enter Task Name" name="task" required>
 
                 <label for="date"><b>Date</b></label>
-                <input type="text" placeholder="Enter Date" name="date" required autocomplete="off">
+                <input type="text" placeholder="Enter Date" name="date" required>
 
                 <label for="start"><b>Start Time</b></label>
-                <input type="text" placeholder="Enter Start Time" name="start" required autocomplete="off">
+                <input type="text" placeholder="Enter Start Time" name="start" required>
 
                 <label for="end"><b>End Time</b></label>
-                <input type="text" placeholder="Enter End Time" name="end" required autocomplete="off">
+                <input type="text" placeholder="Enter End Time" name="end" required>
 
                 <button type="submit" class="btn">Add Task</button>
 
             </div>
         </form>
 
-        <form action="calendar.html" style="border:1px solid #ccc">
+        <form action="calendar.html" style="border:1px solid #ccc" autocomplete="off">
             <div class="container">
                 <h1>Delete Task</h1>
 
                 <label for="task"><b>Task Name</b></label>
-                <input type="text" placeholder="Enter Task Name" name="task" required>
+                <input type="text" placeholder="Enter Task Name" name="task" required autocomplete="off">
 
                 <button type="submit" class="btn">Delete Task</button>
 
@@ -125,7 +125,7 @@
         </form>
     </div>
 
-        <script src="calendar.js"></script>
+        <script src="calendar2.js"></script>
     </body>
     
 </html>
