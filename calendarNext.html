@@ -4,47 +4,45 @@
     <head>
         <title>Calendar</title>
         <link rel="stylesheet" href="styles/styles.css" />
-        <script async src="./javascript/calendar.js"></script>
+        <script async src="./javascript/calendarNext.js"></script>
     </head>
 
     <body onload="generate_table();">
         <h1> Genda Weekly Calendar </h1>
 
 
-        <h3>13 October 2019 - 19 October 2019</h3>
+        <h3>20 October 2019 - 26 October 2019</h3>
 
 
         <div class="form-inline">
-            <form action="calendarPrev.html">
+            <form action="calendar.html">
                 <button style="float: left;" class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()">Previous</button>
             </form>
-            <form action="calendarNext.html">
-                <button style="float: right;" class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next</button>
-            </form>
+            <button style="float: right;" class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next</button>
         </div>
 
 
         <button class="open-button" onclick="openForm()">Add Task</button>
 
         <div class="form-popup" id="myForm">
-            <form action="calendar2.html" class="form-container" autocomplete="off">
+            <form action="calendar.html" class="form-container">
                 <div class="container">
                     <h1>Add Task</h1>
     
                     <label for="username"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="username" required autocomplete="off">
+                    <input type="text" placeholder="Enter Username" name="username" required>
 
                     <label for="task"><b>Task Name</b></label>
-                    <input type="text" placeholder="Enter Task Name" name="task" required autocomplete="off">
+                    <input type="text" placeholder="Enter Task Name" name="task" required>
 
                     <label for="date"><b>Date</b></label>
-                    <input type="text" placeholder="Enter Date" name="date" required autocomplete="off">
+                    <input type="text" placeholder="Enter Date" name="date" required>
 
                     <label for="start"><b>Start Time</b></label>
-                    <input type="text" placeholder="Enter Start Time" name="start" required autocomplete="off">
+                    <input type="text" placeholder="Enter Start Time" name="start" required>
 
                     <label for="end"><b>End Time</b></label>
-                    <input type="text" placeholder="Enter End Time" name="end" required autocomplete="off">
+                    <input type="text" placeholder="Enter End Time" name="end" required>
                   
                     <div class="clearfix">
                         <button type="submit" class="btn">Add Task</button>
@@ -58,7 +56,7 @@
         <button class="open-button2" onclick="openForm2()">Delete Task</button>
 
         <div class="form-popup" id="myForm2">
-            <form action="calendar2.html" class="form-container">
+            <form action="calendar.html" class="form-container">
                 <div class="container">
                     <h1>Delete Task</h1>
 
@@ -74,7 +72,7 @@
         </div>
 
 
-        <script src="calendar.js"></script>
+        <script src="calendarNext.js"></script>
     </body>
     
 </html>
