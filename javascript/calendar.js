@@ -37,9 +37,18 @@ function next() {
 }
 
 function previous() {
-    currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
-    currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
-    showCalendar(currentMonth, currentYear);
+  var curr = new Date();
+  var nextSunday = new Date(currSunday.getFullYear(), currSunday.getMonth(), currSunday.getDate()-7);
+  var nextSaturday = new Date(currSaturday.getFullYear(), currSaturday.getMonth(), currSaturday.getDate()-7); 
+  currSunday = nextSunday;
+  currSaturday = nextSaturday;
+  //change date of week
+  var weekDate = document.getElementById("weeklyDate");
+  weekDate.innerHTML = nextSunday.toDateString() + " - " + nextSaturday.toDateString() ;
+  // currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
+  // currentMonth = (currentMonth + 1) % 12;
+  console.log("about to enter show calendar in func next()");
+  showCalendar(currentMonth, currentYear);
 }
 
 function jump() {
