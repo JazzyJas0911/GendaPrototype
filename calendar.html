@@ -8,6 +8,7 @@
     </head>
 
     <body onload="generate_table();">
+    <!-- <body> -->
         <h1> Genda Weekly Calendar </h1>
 
 
@@ -20,6 +21,24 @@
 
             <button style="float: right;" class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next</button>
         </div>
+
+        <table class="table table-bordered table-responsive-sm" id="calendar">
+            <thead>
+            <tr>
+                <th>Sunday</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+            </tr>
+            </thead>
+
+            <tbody id="calendar-body">
+
+            </tbody>
+        </table>
 
 
         <button class="open-button" onclick="openForm()">Add Task</button>

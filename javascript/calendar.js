@@ -6,16 +6,24 @@ let selectYear = document.getElementById("year");
 let selectMonth = document.getElementById("month");
 let selectDay = document.getElementById("day");
 
+
 let months = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-let days = ["", "Sunday, Oct. 13", "Monday, Oct. 14", "Tuesday, Oct. 15", "Wednesday, Oct. 16", "Thursday, Oct. 17", "Friday, Oct. 18", "Saturday, Oct. 19"];
+// let days = ["", "Sunday, Oct. 13", "Monday, Oct. 14", "Tuesday, Oct. 15", "Wednesday, Oct. 16", "Thursday, Oct. 17", "Friday, Oct. 18", "Saturday, Oct. 19"];
+let days = ["", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let times = ["", "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"];
 
 let monthAndYear = document.getElementById("monthAndYear");
+
+// document.addEventListener("DOMContentLoaded", function() {
+//   generate_table();
+// });
+
 showCalendar(currentMonth, currentYear);
 
 function next() {
     currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
     currentMonth = (currentMonth + 1) % 12;
+    console.log("about to enter show calendar in func next()");
     showCalendar(currentMonth, currentYear);
 }
 
@@ -31,7 +39,56 @@ function jump() {
     showCalendar(currentMonth, currentYear);
 }
 
+
+
+function generate_table() {
+  // get the reference for the body
+  // var body = document.getElementsByTagName("body")[0];
+
+  // creates a <table> element and a <tbody> element
+  var tbl = document.getElementById("calendar");
+
+  // DEEAAAAAD CODE
+  // var col = document.createElement("col");
+  // col.setAttribute("width", "50");
+  // col.setAttribute("width", "200");
+
+  var tblBody = document.getElementById("calendar-body");
+  
+  // creating all cells
+  for (var i = 0; i < 25; i++) {
+    // creates a table row
+    var row = document.createElement("tr");
+
+    for (var j = 0; j < 8; j++) {
+      // Create a <td> element and a text node, make the text
+      // node the contents of the <td>, and put the <td> at
+      // the end of the table row
+      var cell = document.createElement("td");
+      var cellText;
+      // if(i == 0) // DAYS OF THE WEEK
+      //     cellText = document.createTextNode(days[j]);
+      if (j == 0) // TIME OF DAY
+          cellText = document.createTextNode(times[i]);
+      else // ELSE IF THERE IS AN EVENT
+          cellText = document.createTextNode("");
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+    }
+
+    // add the row to the end of the table body
+    tblBody.appendChild(row);
+  }
+
+  // put the <tbody> in the <table>
+  tbl.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tbl);
+}
+
+
 function showCalendar(month, year) {
+    console.log("Got into showCalendar");
 
     let firstDay = (new Date(year, month)).getDay();
     let daysInMonth = 32 - new Date(year, month, 32).getDate();
@@ -39,7 +96,7 @@ function showCalendar(month, year) {
     let tbl = document.getElementById("calendar-body"); // body of the calendar
 
     // clearing all previous cells
-    tbl.innerHTML = "";
+    // tbl.innerHTML = "";
 
     // filing data about month and in the page via DOM.
     monthAndYear.innerHTML = months[month] + " " + year;
@@ -81,62 +138,6 @@ function showCalendar(month, year) {
     }
 
 }
-
-
-
-
-
-
-
-function generate_table() {
-    // get the reference for the body
-    var body = document.getElementsByTagName("body")[0];
-  
-    // creates a <table> element and a <tbody> element
-    var tbl = document.createElement("table");
-
-    // DEEAAAAAD CODE
-    var col = document.createElement("col");
-    col.setAttribute("width", "50");
-    col.setAttribute("width", "200");
-
-    var tblBody = document.createElement("tbody");
-  
-    // creating all cells
-    for (var i = 0; i < 25; i++) {
-      // creates a table row
-      var row = document.createElement("tr");
-  
-      for (var j = 0; j < 8; j++) {
-        // Create a <td> element and a text node, make the text
-        // node the contents of the <td>, and put the <td> at
-        // the end of the table row
-        var cell = document.createElement("td");
-        var cellText;
-        if(i == 0) // DAYS OF THE WEEK
-            cellText = document.createTextNode(days[j]);
-        else if (j == 0) // TIME OF DAY
-            cellText = document.createTextNode(times[i]);
-        else // ELSE IF THERE IS AN EVENT
-            cellText = document.createTextNode("");
-        cell.appendChild(cellText);
-        row.appendChild(cell);
-      }
-  
-      // add the row to the end of the table body
-      tblBody.appendChild(row);
-    }
-  
-    // put the <tbody> in the <table>
-    tbl.appendChild(tblBody);
-    // appends <table> into <body>
-    body.appendChild(tbl);
-  }
-  
-
-
-
-
 
   // Get the modal
 var modal = document.getElementById("myModal1");
