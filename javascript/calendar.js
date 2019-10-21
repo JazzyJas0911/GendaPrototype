@@ -1,3 +1,6 @@
+"use strict";
+
+
 let today = new Date();
 let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
@@ -5,24 +8,30 @@ let currentDay = today.getDay();
 let selectYear = document.getElementById("year");
 let selectMonth = document.getElementById("month");
 let selectDay = document.getElementById("day");
-
+let currSunday = new Date();
+let currSaturday = new Date();
 
 let months = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 // let days = ["", "Sunday, Oct. 13", "Monday, Oct. 14", "Tuesday, Oct. 15", "Wednesday, Oct. 16", "Thursday, Oct. 17", "Friday, Oct. 18", "Saturday, Oct. 19"];
 let days = ["", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let times = ["", "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"];
 
-let monthAndYear = document.getElementById("monthAndYear");
 
-// document.addEventListener("DOMContentLoaded", function() {
-//   generate_table();
-// });
+
 
 showCalendar(currentMonth, currentYear);
 
 function next() {
-    currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
-    currentMonth = (currentMonth + 1) % 12;
+    var curr = new Date();
+    var nextSunday = new Date(currSunday.getFullYear(), currSunday.getMonth(), currSunday.getDate()+7);
+    var nextSaturday = new Date(currSaturday.getFullYear(), currSaturday.getMonth(), currSaturday.getDate()+7); 
+    currSunday = nextSunday;
+    currSaturday = nextSaturday;
+    //change date of week
+    var weekDate = document.getElementById("weeklyDate");
+    weekDate.innerHTML = nextSunday.toDateString() + " - " + nextSaturday.toDateString() ;
+    // currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
+    // currentMonth = (currentMonth + 1) % 12;
     console.log("about to enter show calendar in func next()");
     showCalendar(currentMonth, currentYear);
 }
@@ -42,6 +51,19 @@ function jump() {
 
 
 function generate_table() {
+  //set range of dates for week
+  var curr = new Date();
+    var first = curr.getDate() - curr.getDay();
+    var last = first + 6 ;
+
+    currSunday = new Date(curr.setDate(first)); //first day of week (sun)
+    currSaturday = new Date(curr.setDate(last)); //last day (sat)
+
+    //change date of week
+    var weekDate = document.getElementById("weeklyDate");
+    weekDate.innerHTML = currSunday.toDateString() + " - " + currSaturday.toDateString() ;
+
+
   // get the reference for the body
   // var body = document.getElementsByTagName("body")[0];
 
@@ -83,7 +105,7 @@ function generate_table() {
   // put the <tbody> in the <table>
   tbl.appendChild(tblBody);
   // appends <table> into <body>
-  body.appendChild(tbl);
+  // body.appendChild(tbl);
 }
 
 
@@ -99,6 +121,7 @@ function showCalendar(month, year) {
     // tbl.innerHTML = "";
 
     // filing data about month and in the page via DOM.
+    let monthAndYear = document.getElementById("monthAndYear");
     monthAndYear.innerHTML = months[month] + " " + year;
     selectYear.value = year;
     selectMonth.value = month;
