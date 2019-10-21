@@ -57,20 +57,18 @@ function jump() {
     showCalendar(currentMonth, currentYear);
 }
 
-
-
 function generate_table() {
   //set range of dates for week
   var curr = new Date();
-    var first = curr.getDate() - curr.getDay();
-    var last = first + 6 ;
+  var first = curr.getDate() - curr.getDay();
+  var last = first + 6 ;
 
-    currSunday = new Date(curr.setDate(first)); //first day of week (sun)
-    currSaturday = new Date(curr.setDate(last)); //last day (sat)
+  currSunday = new Date(curr.setDate(first)); //first day of week (sun)
+  currSaturday = new Date(curr.setDate(last)); //last day (sat)
 
-    //change date of week
-    var weekDate = document.getElementById("weeklyDate");
-    weekDate.innerHTML = currSunday.toDateString() + " - " + currSaturday.toDateString() ;
+  //change date of week
+  var weekDate = document.getElementById("weeklyDate");
+  weekDate.innerHTML = currSunday.toDateString() + " - " + currSaturday.toDateString() ;
 
 
   // get the reference for the body
@@ -97,9 +95,9 @@ function generate_table() {
       // the end of the table row
       var cell = document.createElement("td");
       var cellText;
-      // if(i == 0) // DAYS OF THE WEEK
-      //     cellText = document.createTextNode(days[j]);
-      if (j == 0) // TIME OF DAY
+      if(i == 0) // DAYS OF THE WEEK
+          cellText = document.createTextNode(days[j]);
+      else if (j == 0) // TIME OF DAY
           cellText = document.createTextNode(times[i]);
       else // ELSE IF THERE IS AN EVENT
           cellText = document.createTextNode("");
