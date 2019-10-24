@@ -1,5 +1,6 @@
 "use strict";
 
+//should account for leap year
 
 let today = new Date();
 let currentMonth = today.getMonth();
@@ -33,8 +34,10 @@ function next() {
     weekDate.innerHTML = nextSunday.toDateString() + " - " + nextSaturday.toDateString() ;
     // currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
     // currentMonth = (currentMonth + 1) % 12;
-    console.log("about to enter show calendar in func next()");
-    showCalendar(currentMonth, currentYear);
+    
+    
+    // generate_table();
+    // showCalendar(currentMonth, currentYear);
 }
 
 function previous() {
@@ -48,14 +51,15 @@ function previous() {
   weekDate.innerHTML = nextSunday.toDateString() + " - " + nextSaturday.toDateString() ;
   // currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
   // currentMonth = (currentMonth + 1) % 12;
-  console.log("about to enter show calendar in func next()");
-  showCalendar(currentMonth, currentYear);
+  console.log("about to enter generate table in func next()");
+  // generate_table();
+  // showCalendar(currentMonth, currentYear);
 }
 
 function jump() {
     currentYear = parseInt(selectYear.value);
     currentMonth = parseInt(selectMonth.value);
-    showCalendar(currentMonth, currentYear);
+    // showCalendar(currentMonth, currentYear);
 }
 
 function generate_table() {
@@ -130,6 +134,12 @@ function generate_table() {
   tbl.appendChild(tblBody);
   // appends <table> into <body>
   // body.appendChild(tbl);
+}
+
+function tableHead(){
+  $("#calendar-head tr").remove();
+  var head = document.getElementById("calendar-head");
+  head.innerHTML = '';
 }
 
 
