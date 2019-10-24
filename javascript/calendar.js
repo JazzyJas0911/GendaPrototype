@@ -88,15 +88,22 @@ function generate_table() {
   for (var i = 0; i < 25; i++) {
     // creates a table row
     var row = document.createElement("tr");
-
+    let counter = currSunday.getDate();
+    console.log("counter: ", counter)
     for (var j = 0; j < 8; j++) {
       // Create a <td> element and a text node, make the text
       // node the contents of the <td>, and put the <td> at
       // the end of the table row
       var cell = document.createElement("td");
       var cellText;
-      if(i == 0) // DAYS OF THE WEEK
+      // if(i == 0){ // DAYS OF THE WEEK
+      //   if(j != 0){
+      //     cellText = document.createTextNode(days[j] + " " + counter + " " + months[currSunday.getMonth()] + " " + currSunday.getFullYear());
+      //     counter++;
+      //   }
+      if(i == 0){ // DAYS OF THE WEEK
           cellText = document.createTextNode(days[j]);
+      }
       else if (j == 0) // TIME OF DAY
           cellText = document.createTextNode(times[i]);
       else // ELSE IF THERE IS AN EVENT
