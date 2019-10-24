@@ -8,6 +8,7 @@
     </head>
 
     <body onload="generate_table();">
+      
     <!-- <body> -->
         <h1> Genda Weekly Calendar </h1>
 
@@ -87,6 +88,18 @@
             </form>
         </div>
 
+        <form action="calendar.html" style="border:1px solid #ccc">
+            <div class="container">
+                <h1>Delete Task</h1>
+
+                <label for="task"><b>Task Name</b></label>
+                <input type="text" placeholder="Enter Task Name" name="task" required>
+
+                <button type="submit" class="btn">Delete Task</button>
+
+            </div>
+        </form>
+    </div>
 
         <script src="calendar.js"></script>
     </body>
