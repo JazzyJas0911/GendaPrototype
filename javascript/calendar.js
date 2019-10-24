@@ -38,6 +38,7 @@ function next() {
     
     // generate_table();
     // showCalendar(currentMonth, currentYear);
+    tableHead();
 }
 
 function previous() {
@@ -54,13 +55,10 @@ function previous() {
   console.log("about to enter generate table in func next()");
   // generate_table();
   // showCalendar(currentMonth, currentYear);
+  tableHead();
 }
 
-function jump() {
-    currentYear = parseInt(selectYear.value);
-    currentMonth = parseInt(selectMonth.value);
-    // showCalendar(currentMonth, currentYear);
-}
+
 
 function generate_table() {
   //set range of dates for week
@@ -109,14 +107,13 @@ function generate_table() {
             cellText = document.createTextNode(" ");
           }
           else{
-
             cellText = document.createTextNode(days[j] + ", " + months[currSunday.getMonth()] + " " + incDays );
             incDays++;
           }
 
         cell.appendChild(cellText);
         row.appendChild(cell);
-        tblHead.appendChild(row);
+        
       }
       else if (j == 0) // TIME OF DAY
           cellText = document.createTextNode(times[i]);
@@ -126,21 +123,86 @@ function generate_table() {
       row.appendChild(cell);
     }
 
+    tblHead.appendChild(row);
     // add the row to the end of the table body
     tblBody.appendChild(row);
   }
 
   // put the <tbody> in the <table>
-  tbl.appendChild(tblBody);
+  // tbl.appendChild(tblBody);
   // appends <table> into <body>
   // body.appendChild(tbl);
 }
 
+/**
+ * used to update row with days and dates
+ */
 function tableHead(){
-  $("#calendar-head tr").remove();
-  var head = document.getElementById("calendar-head");
-  head.innerHTML = '';
+  
+
+  var tblHead = document.getElementById("calendar-head");
+  var tblBody = document.getElementById("calendar-body");
+  // tblHead.innerHTML = '';
+  tblBody.removeChild(tblBody.childNodes[1]);
+  // tblHead.removeChild(tblHead.childNodes[0]);
+  var row = document.createElement("tr");
+
+  var incDays = currSunday.getDate(); //incrementing days
+  var incMonths = currSunday.getMonth(); //incrementing month
+  var incYears = currSunday.getFullYear(); //incrementing year
+
+
+  for(var i = 0; i < 25; i++){
+    for (var j = 0; j < 8; j++) {
+      // Create a <td> element and a text node, make the text
+      // node the contents of the <td>, and put the <td> at
+      // the end of the table row
+      var cell = document.createElement("td");
+      var cellText;
+  
+      if(i == 0){ // DAYS OF THE WEEK
+        if(incDays == 32){
+          incDays = 1;
+          incMonths++;
+        }
+        if(incMonths == 12){
+          incMonths = 0;
+        }
+        console.log("incDays: ", incDays);
+        console.log("incMonths: ", incMonths);
+
+        if(j == 0){
+          cellText = document.createTextNode(" ");
+        }
+        else{
+          //new days
+          cellText = document.createTextNode(days[j] + ", " + months[incMonths] + " " + incDays );
+          incDays++;
+            
+        }
+  
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+        
+      }
+
+    }
+  
+    // tblHead.appendChild(row);
+    // add the row to the end of the table body
+    
+    // tblBody.appendChild(row);
+    tblBody.insertBefore(row, tblBody.firstChild);
+  }
+  
 }
+
+// function jump() {
+//     currentYear = parseInt(selectYear.value);
+//     currentMonth = parseInt(selectMonth.value);
+//     // showCalendar(currentMonth, currentYear);
+// }
+
 
 
 // function showCalendar(month, year) {
