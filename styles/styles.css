@@ -300,3 +300,16 @@ table {
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+
+
+
+
+
+
+/* LOGO */
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
