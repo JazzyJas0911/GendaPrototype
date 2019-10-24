@@ -4,110 +4,89 @@
     <head>
         <title>Calendar</title>
         <link rel="stylesheet" href="styles/styles.css" />
-        <script async src="./javascript/calendar.js"></script>
+        <script src="./javascript/calendar.js"></script>
     </head>
 
     <body onload="generate_table();">
-        <h1> Genda Monthly Calendar </h1>
+      
+    <!-- <body> -->
+        <h1> Genda Weekly Calendar </h1>
 
 
-        <div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
-            <div class="card">
-                <h3 class="card-header" id="monthAndYear"></h3>
-                <table class="table table-bordered table-responsive-sm" id="calendar">
-                    <thead>
-                    <tr>
-                        <th>Sunday</th>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
-                        <th>Saturday</th>
-                    </tr>
-                    </thead>
-        
-                    <tbody id="calendar-body">
-        
-                    </tbody>
-                </table>
-        
-                <div class="form-inline">
-        
-                    <button class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()">Previous</button>
-        
-                    <button class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next</button>
-                </div>
-                <br/>
+        <h3 id = "weeklyDate"></h3>
 
-                
-                <form class="form-inline">
-                    <label class="lead mr-2 ml-2" for="month">Jump To: </label>
-                    <select class="form-control col-sm-4" name="month" id="month" onchange="jump()">
-                        <option value=0>January</option>
-                        <option value=1>Feburary</option>
-                        <option value=2>March</option>
-                        <option value=3>April</option>
-                        <option value=4>May</option>
-                        <option value=5>June</option>
-                        <option value=6>July</option>
-                        <option value=7>August</option>
-                        <option value=8>September</option>
-                        <option value=9>October</option>
-                        <option value=10>November</option>
-                        <option value=11>December</option>
-                    </select>
-        
-        
-                    <label for="year"></label><select class="form-control col-sm-4" name="year" id="year" onchange="jump()">
-                    <option value=2009>2009</option>
-                    <option value=2010>2010</option>
-                    <option value=2011>2011</option>
-                    <option value=2012>2012</option>
-                    <option value=2013>2013</option>
-                    <option value=2014>2014</option>
-                    <option value=2015>2015</option>
-                    <option value=2016>2016</option>
-                    <option value=2017>2017</option>
-                    <option value=2018>2018</option>
-                    <option value=2019>2019</option>
-                    <option value=2020>2020</option>
-                    <option value=2021>2021</option>
-                    <option value=2022>2022</option>
-                    <option value=2023>2023</option>
-                    <option value=2024>2024</option>
-                    <option value=2025>2025</option>
-                    <option value=2026>2026</option>
-                    <option value=2027>2027</option>
-                    <option value=2028>2028</option>
-                    <option value=2029>2029</option>
-                </select></form>
 
-            </div>
+        <div class="form-inline">
+        
+            <button style="float: left;" class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()">Previous</button>
+
+            <button style="float: right;" class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next</button>
         </div>
 
-        
-<div style="display: flex;">
-        <form action="calendar.html" style="border:1px solid #ccc">
-            <div class="container">
-                <h1>Add Task</h1>
+        <table class="table table-bordered table-responsive-sm" id="calendar">
+            <thead id = "calendar-head">
+            <!-- <tr>
+                <th>Sunday</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+            </tr> -->
+            </thead>
 
-                <label for="username"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="username" required>
+            <tbody id="calendar-body">
 
-                <label for="task"><b>Task Name</b></label>
-                <input type="text" placeholder="Enter Task Name" name="task" required>
+            </tbody>
+        </table>
 
-                <label for="start"><b>Start Time</b></label>
-                <input type="text" placeholder="Enter Start Time" name="start" required>
 
-                <label for="end"><b>End Time</b></label>
-                <input type="text" placeholder="Enter End Time" name="end" required>
+        <button class="open-button" onclick="openForm()">Add Task</button>
 
-                <button type="submit" class="btn">Add Task</button>
+        <div class="form-popup" id="myForm">
+            <form action="calendar.html" class="form-container">
+                <div class="container">
+                    <h1>Add Task</h1>
+    
+                    <label for="username"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="username" required>
 
-            </div>
-        </form>
+                    <label for="task"><b>Task Name</b></label>
+                    <input type="text" placeholder="Enter Task Name" name="task" required>
+
+                    <label for="start"><b>Start Time</b></label>
+                    <input type="text" placeholder="Enter Start Time" name="start" required>
+
+                    <label for="end"><b>End Time</b></label>
+                    <input type="text" placeholder="Enter End Time" name="end" required>
+                  
+                    <div class="clearfix">
+                        <button type="submit" class="btn">Add Task</button>
+                        <button type="submit" class="btn cancel" onclick="closeForm()">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <button class="open-button2" onclick="openForm2()">Delete Task</button>
+
+        <div class="form-popup" id="myForm2">
+            <form action="calendar.html" class="form-container">
+                <div class="container">
+                    <h1>Delete Task</h1>
+
+                    <label for="task"><b>Task Name</b></label>
+                    <input type="text" placeholder="Enter Task Name" name="task" required>
+                  
+                    <div class="clearfix">
+                        <button type="submit" class="btn">Delete Task</button>
+                        <button type="submit" class="btn cancel" onclick="closeForm2()">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
         <form action="calendar.html" style="border:1px solid #ccc">
             <div class="container">

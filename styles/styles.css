@@ -47,13 +47,13 @@ input[type=text]:focus, input[type=password]:focus {
 
 /* Set a style for all buttons */
 button {
-  background-color: #4CAF50;
+  background-color: #555555;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 25%;
   opacity: 0.9;
 }
 
@@ -221,6 +221,20 @@ table {
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 74px;
+  right: 28px;
+  width: 280px;
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button2 {
   background-color: #555;
   color: white;
   padding: 16px 20px;
