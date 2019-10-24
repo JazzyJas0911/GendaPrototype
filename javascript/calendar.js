@@ -13,13 +13,14 @@ let currSaturday = new Date();
 
 let months = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 // let days = ["", "Sunday, Oct. 13", "Monday, Oct. 14", "Tuesday, Oct. 15", "Wednesday, Oct. 16", "Thursday, Oct. 17", "Friday, Oct. 18", "Saturday, Oct. 19"];
-let days = ["", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let days = ["", "Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 let times = ["", "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"];
 
 
 
 
-showCalendar(currentMonth, currentYear);
+// showCalendar(currentMonth, currentYear);
+generate_table();
 
 function next() {
     var curr = new Date();
@@ -82,27 +83,36 @@ function generate_table() {
   // col.setAttribute("width", "50");
   // col.setAttribute("width", "200");
 
-  var tblBody = document.getElementById("calendar-body");
+  var tblHead = document.getElementById("calendar-head"); //table head
+  var tblBody = document.getElementById("calendar-body"); //table body
   
+  var incDays = currSunday.getDate() //incrementing days
+
   // creating all cells
   for (var i = 0; i < 25; i++) {
     // creates a table row
     var row = document.createElement("tr");
-    let counter = currSunday.getDate();
-    console.log("counter: ", counter)
+
     for (var j = 0; j < 8; j++) {
       // Create a <td> element and a text node, make the text
       // node the contents of the <td>, and put the <td> at
       // the end of the table row
       var cell = document.createElement("td");
       var cellText;
-      // if(i == 0){ // DAYS OF THE WEEK
-      //   if(j != 0){
-      //     cellText = document.createTextNode(days[j] + " " + counter + " " + months[currSunday.getMonth()] + " " + currSunday.getFullYear());
-      //     counter++;
-      //   }
+
       if(i == 0){ // DAYS OF THE WEEK
-          cellText = document.createTextNode(days[j]);
+          if(j == 0){
+            cellText = document.createTextNode(" ");
+          }
+          else{
+
+            cellText = document.createTextNode(days[j] + ", " + months[currSunday.getMonth()] + " " + incDays );
+            incDays++;
+          }
+
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+        tblHead.appendChild(row);
       }
       else if (j == 0) // TIME OF DAY
           cellText = document.createTextNode(times[i]);
@@ -123,58 +133,60 @@ function generate_table() {
 }
 
 
-function showCalendar(month, year) {
-    console.log("Got into showCalendar");
+// function showCalendar(month, year) {
+//     console.log("Got into showCalendar");
 
-    let firstDay = (new Date(year, month)).getDay();
-    let daysInMonth = 32 - new Date(year, month, 32).getDate();
+//     let firstDay = (new Date(year, month)).getDay();
+//     let daysInMonth = 32 - new Date(year, month, 32).getDate();
 
-    let tbl = document.getElementById("calendar-body"); // body of the calendar
+//     let head = document.getElementById("calendar-head"); // head of the calendar
+//     let body = document.getElementById("calendar-body"); // body of the calendar
 
-    // clearing all previous cells
-    // tbl.innerHTML = "";
 
-    // filing data about month and in the page via DOM.
-    let monthAndYear = document.getElementById("monthAndYear");
-    monthAndYear.innerHTML = months[month] + " " + year;
-    selectYear.value = year;
-    selectMonth.value = month;
+//     // clearing all previous cells
+//     // tbl.innerHTML = "";
 
-    // creating all cells
-    let date = 1;
-    for (let i = 0; i < 6; i++) {
-        // creates a table row
-        let row = document.createElement("tr");
+//     // filing data about month and in the page via DOM.
+//     let monthAndYear = document.getElementById("monthAndYear");
+//     monthAndYear.innerHTML = months[month] + " " + year;
+//     selectYear.value = year;
+//     selectMonth.value = month;
 
-        //creating individual cells, filing them up with data.
-        for (let j = 0; j < 7; j++) {
-            if (i === 0 && j < firstDay) {
-                let cell = document.createElement("td");
-                let cellText = document.createTextNode("");
-                cell.appendChild(cellText);
-                row.appendChild(cell);
-            }
-            else if (date > daysInMonth) {
-                break;
-            }
+//     // creating all cells
+//     let date = 1;
+//     for (let i = 0; i < 6; i++) {
+//         // creates a table row
+//         let row = document.createElement("tr");
 
-            else {
-                let cell = document.createElement("td");
-                let cellText = document.createTextNode(date);
-                if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
-                    cell.classList.add("bg-info");
-                } // color today's date
-                cell.appendChild(cellText);
-                row.appendChild(cell);
-                date++;
-            }
+//         //creating individual cells, filing them up with data.
+//         for (let j = 0; j < 7; j++) {
+//             if (i === 0 && j < firstDay) {
+//                 let cell = document.createElement("td");
+//                 let cellText = document.createTextNode("");
+//                 cell.appendChild(cellText);
+//                 row.appendChild(cell);
+//             }
+//             else if (date > daysInMonth) {
+//                 break;
+//             }
 
-        }
+//             else {
+//                 let cell = document.createElement("td");
+//                 let cellText = document.createTextNode(date);
+//                 if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
+//                     cell.classList.add("bg-info");
+//                 } // color today's date
+//                 cell.appendChild(cellText);
+//                 row.appendChild(cell);
+//                 date++;
+//             }
 
-        tbl.appendChild(row); // appending each row into calendar body.
-    }
+//         }
 
-}
+//         body.appendChild(row); // appending each row into calendar body.
+//     }
+
+// }
 
   // Get the modal
 var modal = document.getElementById("myModal1");
