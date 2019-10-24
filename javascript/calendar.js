@@ -35,32 +35,37 @@ function calWeekDayRow(){
 function calDays(calDate){
   //return the starting day of the month
   var day = new Date(calDate.getFullYear(), calDate.getMonth(), 1);
-  var weekDay = day.getDay();
+  var sunday = day.getDate() - day.getDay();
   //write blank cells preceding the starting dayName
   var htmlCode = "<tr>";
-  for(var i = 0; i < weekDay; i++){
-    htmlCode += "<td></td>";
-  }
+  // for(var i = 0; i < weekDay; i++){
+  //   htmlCode += "<td></td>";
+  // }
   //write cells for each day of the month
-  var totalDays = daysInMonth(calDate);
+  // var totalDays = daysInMonth(calDate);
   var highlightDay = calDate.getDate();
+  weekDay = day.getDay();
+  console.log("weekDay: ", weekDay);
   for (var i = 1; i <= 7; i++) {
-    day.setDate(i);
-    weekDay = day.getDay();
+    // day.setDate(i);
+    
 
-    if (weekDay === 0) {
-      htmlCode += "<tr>";
-    }
+    // if (weekDay === 0) {
+    //   htmlCode += "<tr>";
+    // }
     if (i === highlightDay) {
-        htmlCode += "<td class='calendar_dates' id='calendar_today'>" + i + dayEvent[i] +  "</td>";
+        htmlCode += "<td class='calendar_dates' id='calendar_today'>" + weekDay + dayEvent[i] +  "</td>";
     }
     else {
-        htmlCode += "<td class='calendar_dates'>" + i + dayEvent[i] + "</td>";
+        htmlCode += "<td class='calendar_dates'>" + weekDay + dayEvent[i] + "</td>";
     }
-    if (weekDay === 6){
-       htmlCode += "</tr>";
-    }
+    // if (weekDay === 6){
+    //    htmlCode += "</tr>";
+    // }
+    weekDay++;
   }
+
+  htmlCode += "</tr>";
 
   return htmlCode;
 }

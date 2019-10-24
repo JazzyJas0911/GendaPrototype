@@ -1,8 +1,7 @@
 "use strict";
 
 /*
-
-   The dayEvent array contains the HTML code of the LHT events in August
+   The dayEvent array contains the HTML code of the  events in the calendar
 */
 
 var dayEvent = new Array();
