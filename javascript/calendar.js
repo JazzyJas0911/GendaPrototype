@@ -122,10 +122,15 @@ function generate_table() {
       cell.appendChild(cellText);
       row.appendChild(cell);
     }
+    
+    if(i == 0){
+      tblHead.appendChild(row);
+    }
+    else{
+      // add the row to the end of the table body
+      tblBody.appendChild(row);
+    }
 
-    tblHead.appendChild(row);
-    // add the row to the end of the table body
-    tblBody.appendChild(row);
   }
 
   // put the <tbody> in the <table>
@@ -142,9 +147,10 @@ function tableHead(){
 
   var tblHead = document.getElementById("calendar-head");
   var tblBody = document.getElementById("calendar-body");
-  // tblHead.innerHTML = '';
-  tblBody.removeChild(tblBody.childNodes[1]);
-  // tblHead.removeChild(tblHead.childNodes[0]);
+  tblHead.innerHTML = '';
+  // tblHead.removeChild(tblHead.childNodes[1]);
+  // tblBody.removeChild(tblBody.childNodes[0]);
+
   var row = document.createElement("tr");
 
   var incDays = currSunday.getDate(); //incrementing days
@@ -192,7 +198,7 @@ function tableHead(){
     // add the row to the end of the table body
     
     // tblBody.appendChild(row);
-    tblBody.insertBefore(row, tblBody.firstChild);
+    tblHead.insertBefore(row, tblHead.firstChild);
   }
   
 }
