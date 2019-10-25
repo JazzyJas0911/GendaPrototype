@@ -165,6 +165,7 @@ function tableHead(){
       // node the contents of the <td>, and put the <td> at
       // the end of the table row
       var cell = document.createElement("td");
+      cell.setAttribute("class", "cell");
       var cellText;
   
       if(i == 0){ // DAYS OF THE WEEK
