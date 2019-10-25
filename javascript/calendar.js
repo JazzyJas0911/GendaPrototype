@@ -15,7 +15,7 @@ let currSaturday = new Date();
 let months = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 // let days = ["", "Sunday, Oct. 13", "Monday, Oct. 14", "Tuesday, Oct. 15", "Wednesday, Oct. 16", "Thursday, Oct. 17", "Friday, Oct. 18", "Saturday, Oct. 19"];
 let days = ["", "Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
-let times = ["", "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"];
+let times = ["", "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"];
 
 
 
@@ -38,6 +38,7 @@ function next() {
     
     // generate_table();
     // showCalendar(currentMonth, currentYear);
+    tableHead();
 }
 
 function previous() {
@@ -54,13 +55,10 @@ function previous() {
   console.log("about to enter generate table in func next()");
   // generate_table();
   // showCalendar(currentMonth, currentYear);
+  tableHead();
 }
 
-function jump() {
-    currentYear = parseInt(selectYear.value);
-    currentMonth = parseInt(selectMonth.value);
-    // showCalendar(currentMonth, currentYear);
-}
+
 
 function generate_table() {
   //set range of dates for week
@@ -93,7 +91,7 @@ function generate_table() {
   var incDays = currSunday.getDate() //incrementing days
 
   // creating all cells
-  for (var i = 0; i < 25; i++) {
+  for (var i = 0; i < 26; i++) {
     // creates a table row
     var row = document.createElement("tr");
 
@@ -109,14 +107,13 @@ function generate_table() {
             cellText = document.createTextNode(" ");
           }
           else{
-
             cellText = document.createTextNode(days[j] + ", " + months[currSunday.getMonth()] + " " + incDays );
             incDays++;
           }
 
         cell.appendChild(cellText);
         row.appendChild(cell);
-        tblHead.appendChild(row);
+        
       }
       else if (j == 0) // TIME OF DAY
           cellText = document.createTextNode(times[i]);
@@ -125,78 +122,87 @@ function generate_table() {
       cell.appendChild(cellText);
       row.appendChild(cell);
     }
+    
+    if(i == 0){
+      tblHead.appendChild(row);
+    }
+    else{
+      // add the row to the end of the table body
+      tblBody.appendChild(row);
+    }
 
-    // add the row to the end of the table body
-    tblBody.appendChild(row);
   }
 
   // put the <tbody> in the <table>
-  tbl.appendChild(tblBody);
+  // tbl.appendChild(tblBody);
   // appends <table> into <body>
   // body.appendChild(tbl);
 }
 
+/**
+ * used to update row with days and dates
+ */
 function tableHead(){
-  $("#calendar-head tr").remove();
-  var head = document.getElementById("calendar-head");
-  head.innerHTML = '';
+  
+
+  var tblHead = document.getElementById("calendar-head");
+  var tblBody = document.getElementById("calendar-body");
+  tblHead.innerHTML = '';
+  // tblHead.removeChild(tblHead.childNodes[1]);
+  // tblBody.removeChild(tblBody.childNodes[0]);
+
+  var row = document.createElement("tr");
+
+  var incDays = currSunday.getDate(); //incrementing days
+  var incMonths = currSunday.getMonth(); //incrementing month
+  var incYears = currSunday.getFullYear(); //incrementing year
+
+
+  for(var i = 0; i < 25; i++){
+    for (var j = 0; j < 8; j++) {
+      // Create a <td> element and a text node, make the text
+      // node the contents of the <td>, and put the <td> at
+      // the end of the table row
+      var cell = document.createElement("td");
+      var cellText;
+  
+      if(i == 0){ // DAYS OF THE WEEK
+        if(incDays == 32){
+          incDays = 1;
+          incMonths++;
+        }
+        if(incMonths == 12){
+          incMonths = 0;
+        }
+        console.log("incDays: ", incDays);
+        console.log("incMonths: ", incMonths);
+
+        if(j == 0){
+          cellText = document.createTextNode(" ");
+        }
+        else{
+          //new days
+          cellText = document.createTextNode(days[j] + ", " + months[incMonths] + " " + incDays );
+          incDays++;
+            
+        }
+  
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+        
+      }
+
+    }
+  
+    // tblHead.appendChild(row);
+    // add the row to the end of the table body
+    
+    // tblBody.appendChild(row);
+    tblHead.insertBefore(row, tblHead.firstChild);
+  }
+  
 }
 
-
-// function showCalendar(month, year) {
-//     console.log("Got into showCalendar");
-
-//     let firstDay = (new Date(year, month)).getDay();
-//     let daysInMonth = 32 - new Date(year, month, 32).getDate();
-
-//     let head = document.getElementById("calendar-head"); // head of the calendar
-//     let body = document.getElementById("calendar-body"); // body of the calendar
-
-
-//     // clearing all previous cells
-//     // tbl.innerHTML = "";
-
-//     // filing data about month and in the page via DOM.
-//     let monthAndYear = document.getElementById("monthAndYear");
-//     monthAndYear.innerHTML = months[month] + " " + year;
-//     selectYear.value = year;
-//     selectMonth.value = month;
-
-//     // creating all cells
-//     let date = 1;
-//     for (let i = 0; i < 6; i++) {
-//         // creates a table row
-//         let row = document.createElement("tr");
-
-//         //creating individual cells, filing them up with data.
-//         for (let j = 0; j < 7; j++) {
-//             if (i === 0 && j < firstDay) {
-//                 let cell = document.createElement("td");
-//                 let cellText = document.createTextNode("");
-//                 cell.appendChild(cellText);
-//                 row.appendChild(cell);
-//             }
-//             else if (date > daysInMonth) {
-//                 break;
-//             }
-
-//             else {
-//                 let cell = document.createElement("td");
-//                 let cellText = document.createTextNode(date);
-//                 if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
-//                     cell.classList.add("bg-info");
-//                 } // color today's date
-//                 cell.appendChild(cellText);
-//                 row.appendChild(cell);
-//                 date++;
-//             }
-
-//         }
-
-//         body.appendChild(row); // appending each row into calendar body.
-//     }
-
-// }
 
   // Get the modal
 var modal = document.getElementById("myModal1");
