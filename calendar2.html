@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Calendar</title>
+        <link rel="stylesheet" href="styles/styles.css" />
+        <script src="./javascript/calendar2.js"></script>
+    </head>
+
+    <body onload="generate_table();">
+      
+    <!-- <body> -->
+        <img src="gendalogo1.png" class="center"/>
+
+
+        <h3 id = "weeklyDate"></h3>
+
+
+        <div class="form-inline">
+        
+            <button style="float: left;" class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()">Previous</button>
+
+            <button style="float: right;" class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next</button>
+        </div>
+
+        <table class="table table-bordered table-responsive-sm" id="calendar">
+            <thead id = "calendar-head">
+            <!-- <tr>
+                <th>Sunday</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+            </tr> -->
+            </thead>
+
+            <tbody id="calendar-body">
+
+            </tbody>
+        </table>
+
+
+        <button class="open-button" onclick="openForm()">Add Task</button>
+
+        <div class="form-popup" id="myForm">
+            <form action="calendar.html" class="form-container">
+                <div class="container">
+                    <h1>Add Task</h1>
+    
+                    <label for="username"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="username" required>
+
+                    <label for="task"><b>Task Name</b></label>
+                    <input type="text" placeholder="Enter Task Name" name="date" required>
+
+                    <label for="date"><b>Date</b></label>
+                    <input type="text" placeholder="Enter Date (mm/dd/yyyy)" name="task" required>
+
+                    <label for="start"><b>Start Time</b></label>
+                    <input type="text" placeholder="Enter Start Time" name="start" required>
+
+                    <label for="end"><b>End Time</b></label>
+                    <input type="text" placeholder="Enter End Time" name="end" required>
+                  
+                    <div class="clearfix">
+                        <button type="submit" class="btn">Add Task</button>
+                        <button type="submit" class="btn cancel" onclick="closeForm()">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <button class="open-button2" onclick="openForm2()">Delete Task</button>
+
+        <div class="form-popup" id="myForm2">
+            <form action="calendar.html" class="form-container">
+                <div class="container">
+                    <h1>Delete Task</h1>
+
+                    <label for="task"><b>Task Name</b></label>
+                    <input type="text" placeholder="Enter Task Name" name="task" required>
+                  
+                    <div class="clearfix">
+                        <button type="submit" class="btn">Delete Task</button>
+                        <button type="submit" class="btn cancel" onclick="closeForm2()">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+        <script src="calendar2.js"></script>
+    </body>
+    
+</html>
