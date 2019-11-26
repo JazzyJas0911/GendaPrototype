@@ -118,6 +118,14 @@ function generate_table() {
       }
       else if (j == 0) // TIME OF DAY
           cellText = document.createTextNode(times[i]);
+      else if (i == 14 && j == 2)
+          cellText = document.createTextNode("Audrey: Work");
+      else if (i == 19 && j == 3)
+          cellText = document.createTextNode("Jasmin: Make Dinner");
+      else if (i == 10 && j == 4)
+          cellText = document.createTextNode("Ryan: Take Kids to School");
+      else if (i == 16 && j == 5)
+          cellText = document.createTextNode("Jordan: Walk Dogs");
       else // ELSE IF THERE IS AN EVENT
           cellText = document.createTextNode("");
       cell.appendChild(cellText);
